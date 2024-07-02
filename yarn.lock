@@ -1114,6 +1114,13 @@
     simple-cbor "^0.4.1"
     ts-node "^10.8.2"
 
+"@dfinity/auth-client@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@dfinity/auth-client/-/auth-client-1.4.0.tgz#a20df5bc2b6c1dd05aa4cc46a047cf1ff8c22656"
+  integrity sha512-9ImeOAw61SQvHJ+w4RHIuKKUL2xAQDLoce+JhmH3DbJuVvNbZIM5xMW8gHTZVlXaMw3Vhip+a1DPJIGy95r9pA==
+  dependencies:
+    idb "^7.0.2"
+
 "@dfinity/candid@0.9.3":
   version "0.9.3"
   resolved "https://registry.yarnpkg.com/@dfinity/candid/-/candid-0.9.3.tgz#96b2a5339da634ccc5546a0560f48f5ceef70dfe"
@@ -4508,6 +4515,11 @@ hyphenate-style-name@^1.0.3:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.1.0.tgz#1797bf50369588b47b72ca6d5e65374607cf4436"
   integrity sha512-WDC/ui2VVRrz3jOVi+XtjqkDjiVjTtFaAGiW37k6b+ohyQ5wYDOGkvCZa8+H0nx3gyvv0+BST9xuOgIyGQ00gw==
+
+idb@^7.0.2:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/idb/-/idb-7.1.1.tgz#d910ded866d32c7ced9befc5bfdf36f572ced72b"
+  integrity sha512-gchesWBzyvGHRO9W8tzUWFDycow5gwjvFKfyV9FF32Y7F50yZMp7mP+T2mJIWFx49zicqyC4uefHM17o6xKIVQ==
 
 ieee754@^1.1.13, ieee754@^1.2.1:
   version "1.2.1"
