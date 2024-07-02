@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 // import io from "socket.io-client";
 import * as faceMesh from "@mediapipe/face_mesh";
+import { FaceMesh } from "@mediapipe/face_mesh";
 import * as cam from "@mediapipe/camera_utils";
 import * as drawingUtils from "@mediapipe/drawing_utils";
 import {
@@ -11,16 +12,21 @@ import {
 } from "../../utils/livenessDetector";
 import { useSocket } from "../../Context/SocketContext";
 
-const VideoCapture: React.FC = () => {
+interface VideoCaptureProps {
+  testComplete: boolean;
+}
+
+const VideoCapture: React.FC<VideoCaptureProps> = ({ testComplete }) => {
   const { socket } = useSocket();
-  console.log(socket, "this is socket");
+  // console.log(socket, "this is socket");
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const resultsRef = useRef<faceMesh.Results | null>(null);
+  const [_isCamon, setCamon] = React.useState(false);
 
   useEffect(() => {
-    const faceMeshInstance = new faceMesh.FaceMesh({
+    const faceMeshInstance = new FaceMesh({
       locateFile: (file: any) => {
         return `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`;
       },
@@ -49,7 +55,16 @@ const VideoCapture: React.FC = () => {
         width: 640,
         height: 480,
       });
+      setCamon(true);
       camera.start();
+      if (testComplete) {
+        camera.stop();
+        setCamon(false);
+        socket?.close();
+      }
+      return () => {
+        camera.stop();
+      };
     }
 
     const intervalId = setInterval(() => {
@@ -94,7 +109,6 @@ const VideoCapture: React.FC = () => {
       }
     }
   };
-
   const analyzeResults = () => {
     if (resultsRef.current && resultsRef.current.multiFaceLandmarks && socket) {
       const landmarks = resultsRef.current.multiFaceLandmarks[0];
@@ -170,6 +184,9 @@ const VideoCapture: React.FC = () => {
       console.error("Socket or emit function is not available");
     }
   };
+  if (testComplete) {
+    return null;
+  }
 
   return (
     <div className="">

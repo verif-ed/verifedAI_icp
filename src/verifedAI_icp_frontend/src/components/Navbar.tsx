@@ -5,14 +5,12 @@ import {
 } from "@worldcoin/idkit";
 import "@suiet/wallet-kit/style.css";
 import ThemeController from "./ThemeController";
-import usewalletStore from "../store/walletStore";
+
 import { Link } from "react-router-dom";
 import PlugConnect from "@psychedelic/plug-connect";
 import worldid from "../assets/worldId-removebg-preview.png";
-import { useEffect } from "react";
-const Navbar = () => {
-  const { setWalletConnected } = usewalletStore();
 
+const Navbar = () => {
   // console.log(wallet, "this is wallet");
   // const { data } = useSuiClientQuery("getOwnedObjects", {
   //   owner: wallet?.address,
@@ -79,7 +77,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu menu-sm dropdown-content  mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
                   <Link to="/dashboard">Dashboard</Link>

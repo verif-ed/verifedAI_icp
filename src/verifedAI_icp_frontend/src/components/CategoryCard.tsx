@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
-import suiIntro from "../../public/sui intro.webp";
-import moveIntro from "../../public/intro_move.webp";
+
+import icpImg from "../assets/icp.jpg";
+import motoko from "../assets/motoko.jpeg";
 const CategoryCard = () => {
   return (
     <div className="card w-auto bg-base-100 shadow-xl">
-      <div className="card-body">
+      <div className="card-body w-full">
         <h2 className="card-title"> Featured Categories</h2>
-        <div className="ui-card-default py-1  category-grid shadow-md flex items-end justify-end">
+        <div className="ui-card-default p-1 gap-1  w-auto shadow-md flex">
           <Link to={`/quiz/icp`}>
-            <div className="flex relative ">
+            <div className="flex relative w-full h-full ">
               <img
-                className="w-full "
-                src={suiIntro}
+                className="w-full rounded-xl"
+                src={icpImg}
                 alt={"dummy"}
                 loading="lazy"
                 height={230}
@@ -24,14 +25,14 @@ const CategoryCard = () => {
             </div>
           </Link>
           <Link to={`/quiz/move`}>
-            <div className="flex relative ">
+            <div className="flex relative w-[80%] ">
               <img
-                className="w-full "
-                src={moveIntro}
+                className="w-full rounded-xl"
+                src={motoko}
                 alt={"dummy"}
                 loading="lazy"
                 height={230}
-                // width={430}
+                // width={230}
               />
 
               <div className="absolute right-3 top-2 text-white p-1  ">

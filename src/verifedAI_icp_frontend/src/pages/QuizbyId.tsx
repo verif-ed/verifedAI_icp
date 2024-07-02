@@ -7,8 +7,8 @@ const QuizbyId = () => {
 
   return (
     <>
-      <div className="flex h-screen w-screen flex-col">
-        <div className="flex justify-center items-center mt-9">
+      <div className="flex h-screen w-screen flex-col ">
+        <div className="flex justify-center items-center mt-52">
           <div className="w-4/5">
             <QuizDetails quizid={id} />
           </div>

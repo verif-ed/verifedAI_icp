@@ -1,12 +1,22 @@
 import { useState, useEffect, useRef } from "react";
 
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import data from "../../move_que.json";
 import icp from "../../icp.json";
 import { useParams } from "react-router-dom";
 import VideoCapture from "../components/Proctoring/VideoCapture";
 
 import { useSocket } from "../Context/SocketContext";
+import Result from "../components/Result";
+
+interface TestResult {
+  totalDuration: number;
+  facePresentPercentage: number;
+  suspiciousActivityCount: number;
+  lookingAwayCount: number;
+  possiblePhotoDetections: number;
+  overallRisk: string;
+}
 
 function formatDateTime(date: any) {
   var hours = date.getHours();
@@ -48,12 +58,19 @@ function Quiz() {
   const { id } = useParams();
 
   const { socket } = useSocket();
-
+  const [result, setResult] = useState<TestResult>({
+    totalDuration: 0,
+    facePresentPercentage: 0,
+    suspiciousActivityCount: 0,
+    lookingAwayCount: 0,
+    possiblePhotoDetections: 0,
+    overallRisk: "",
+  });
   //   const quizId : any = SearchParams.get('id')
   //   const quizName : any = SearchParams.get('name')
   //   const course : any = SearchParams.get('course')
   //   const courseCode : any = SearchParams.get('coursecode')
-  const quizTime = 1200; // 5 minutes in seconds
+  const quizTime = 10; // 5 minutes in seconds
   // const [user, setUser] = useState(null); // User authentication state
   const [questions, setQuestions] = useState<QuizQuestion[]>([]); // Provide type annotation for questions
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -64,7 +81,10 @@ function Quiz() {
   const [timeLeft, setTimeLeft] = useState(quizTime / 1000); // Time limit in seconds
 
   const quizTimeRef = useRef(quizTime);
-  const timeLeftRef = useRef(timeLeft); // This can be updated to allow for custom quiz times
+  const timeLeftRef = useRef(timeLeft);
+
+  const [testComplete, setTestComplete] = useState(false);
+  // This can be updated to allow for custom quiz times
   useEffect(() => {
     if (id === "icp") {
       setQuestions(icp);
@@ -179,10 +199,6 @@ function Quiz() {
       selectedOptions,
       correctAnswers: questions.map((question) => question.correctAnswer),
       fetchedQuestions: questions,
-      //   quizId: quizId,
-      //   quizName: quizName,
-      //   course: course,
-      //   courseCode: courseCode,
       time: n,
     };
 
@@ -200,9 +216,11 @@ function Quiz() {
         console.log(`Quiz Completed! Your Score: ${score}/${questions.length}`);
         socket.on("test_analysis", (data: any) => {
           console.log(data, "this is data");
+          setResult(data);
         });
       }
 
+      setTestComplete(true);
       toast.success("Quiz Submitted Succesfully!");
       // // Redirect to the results page
       // router.push(`/results`);
@@ -216,74 +234,86 @@ function Quiz() {
 
   return (
     <>
-      <div className="absolute right-6 top-44 ">
-        <VideoCapture />
-      </div>
-      <div className="min-h-screen flex items-center justify-center">
-        {currentQuestion ? (
-          <>
-            <div className="bg-slate-800 text-white p-8 rounded-lg shadow-lg w-4/6 h-4/6">
-              <h2 className="text-xl mb-4">
-                Question {currentQuestionIndex + 1}:
-              </h2>
-              <p className="text-lg mb-4">{currentQuestion.question}</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {currentQuestion.options.map((option, index) => (
-                  <div
-                    key={index}
-                    className={`p-4 text-lg cursor-pointer rounded-lg transition duration-300 ${
-                      selectedOptions[currentQuestionIndex] === option
-                        ? "bg-blue-500 text-white"
-                        : "bg-gray-700 hover:bg-gray-500"
-                    }`}
-                    onClick={() => handleOptionSelect(option)}
-                  >
-                    {option}
+      <Toaster />
+      {testComplete ? (
+        <>
+          <div className="hero h-screen w-screen justify-center items-center">
+            <Result result={result} />
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="absolute right-6 top-44 ">
+            <VideoCapture testComplete={testComplete} />
+          </div>
+          <div className="min-h-screen flex items-center justify-center">
+            {currentQuestion ? (
+              <>
+                <div className="bg-slate-800 text-white p-8 rounded-lg shadow-lg w-4/6 h-4/6">
+                  <h2 className="text-xl mb-4">
+                    Question {currentQuestionIndex + 1}:
+                  </h2>
+                  <p className="text-lg mb-4">{currentQuestion.question}</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {currentQuestion.options.map((option, index) => (
+                      <div
+                        key={index}
+                        className={`p-4 text-lg cursor-pointer rounded-lg transition duration-300 ${
+                          selectedOptions[currentQuestionIndex] === option
+                            ? "bg-blue-500 text-white"
+                            : "bg-gray-700 hover:bg-gray-500"
+                        }`}
+                        onClick={() => handleOptionSelect(option)}
+                      >
+                        {option}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-              <div className="mt-4 flex justify-between">
-                {currentQuestionIndex > 0 && (
-                  <button
-                    className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
-                    onClick={handlePreviousQuestion}
-                  >
-                    Previous
-                  </button>
-                )}
-                <div className=" bg-slate-600 text-white p-2 rounded-lg shadow-lg">
-                  {!isTimeUp ? (
-                    <span>
-                      {" "}
-                      Time Left: {Math.floor(timeLeft / 60)} minutes{" "}
-                      {timeLeft % 60} seconds{" "}
-                    </span>
-                  ) : (
-                    <span> Time's Up</span>
-                  )}
+                  <div className="mt-4 flex justify-between">
+                    {currentQuestionIndex > 0 && (
+                      <button
+                        className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md"
+                        onClick={handlePreviousQuestion}
+                      >
+                        Previous
+                      </button>
+                    )}
+                    <div className=" bg-slate-600 text-white p-2 rounded-lg shadow-lg">
+                      {!isTimeUp ? (
+                        <span>
+                          {" "}
+                          Time Left: {Math.floor(timeLeft / 60)} minutes{" "}
+                          {timeLeft % 60} seconds{" "}
+                        </span>
+                      ) : (
+                        <span> Time's Up</span>
+                      )}
+                    </div>
+                    {isFinalQuestion ? (
+                      <button
+                        className="px-4 py-2 bg-blue-500 hover-bg-blue-700 text-white rounded-md"
+                        onClick={handleQuizSubmit}
+                      >
+                        Submit
+                      </button>
+                    ) : (
+                      <button
+                        className="px-4 py-2 bg-blue-500 hover-bg-blue-700 text-white rounded-md"
+                        onClick={handleNextQuestion}
+                      >
+                        Next
+                      </button>
+                    )}
+                  </div>
                 </div>
-                {isFinalQuestion ? (
-                  <button
-                    className="px-4 py-2 bg-blue-500 hover-bg-blue-700 text-white rounded-md"
-                    onClick={handleQuizSubmit}
-                  >
-                    Submit
-                  </button>
-                ) : (
-                  <button
-                    className="px-4 py-2 bg-blue-500 hover-bg-blue-700 text-white rounded-md"
-                    onClick={handleNextQuestion}
-                  >
-                    Next
-                  </button>
-                )}
-              </div>
-            </div>
-          </>
-        ) : (
-          <p>Loading questions...</p>
-        )}
-      </div>
+              </>
+            ) : (
+              <p>Loading questions...</p>
+            )}
+          </div>
+        </>
+      )}
+      {/* </div> */}
     </>
   );
 }

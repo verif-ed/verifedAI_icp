@@ -7,10 +7,10 @@ const Dashboard = () => {
     <div className=" flex h-screen  flex-col mb-8 w">
       <div className="flex justify-center items-center mt-9 h-full">
         <div className="w-4/5">
-          <UserProfile />
+          <UserProfile id="00001x" name="Spidey" certifications={2} />
         </div>
       </div>
-      <div className="flex justify-around mt-6">
+      <div className="flex justify-around mt-3">
         <div className="w-[30%] justify-center flex h-[90%] items-center">
           <Acheivements />
         </div>

@@ -1,5 +1,6 @@
 // import { useState } from "react";
 import { Link } from "react-router-dom";
+import bgi from "../assets/background2.jpeg";
 
 const Home = () => {
   // const [open, setOpen] = useState(false);
@@ -10,7 +11,7 @@ const Home = () => {
       <div
         className="hero min-h-screen bg-gray-100"
         style={{
-          backgroundImage: "url('src/assets/background2.jpeg')",
+          backgroundImage: `url(${bgi})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
