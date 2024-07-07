@@ -49,6 +49,10 @@ actor {
             };
         };
     };
+
+    public query func getTotalRegisteredUsers() : async Nat {
+        return userTokens.size();
+    };
     
   type UniqueID = Text;
 
