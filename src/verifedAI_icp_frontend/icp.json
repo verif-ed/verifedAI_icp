@@ -1,0 +1,241 @@
+[{
+  "questionNumber": 1,
+  "question": "What does ICP stand for?",
+  "options": [
+    "Integrated Computing Protocol",
+    "Internet Computer Protocol",
+    "Intelligent Control Platform",
+    "Interconnected Computing Protocol"
+  ],
+  "correctAnswer": "Internet Computer Protocol",
+  "difficulty": "Easy"
+},
+{
+  "questionNumber": 2,
+  "question": "Who developed the ICP blockchain?",
+  "options": [
+    "Ethereum Foundation",
+    "DFINITY Foundation",
+    "Ripple Labs",
+    "Cardano Foundation"
+  ],
+  "correctAnswer": "DFINITY Foundation",
+  "difficulty": "Easy"
+},
+{
+  "questionNumber": 3,
+  "question": "What is the primary objective of ICP?",
+  "options": [
+    "Decentralized file storage",
+    "Secure messaging protocol",
+    "Decentralized computing platform",
+    "Proof-of-Work consensus mechanism"
+  ],
+  "correctAnswer": "Decentralized computing platform",
+  "difficulty": "Easy"
+},
+{
+  "questionNumber": 4,
+  "question": "Which consensus mechanism does ICP use?",
+  "options": [
+    "Proof-of-Work (PoW)",
+    "Proof-of-Stake (PoS)",
+    "Threshold Relay",
+    "Delegated Proof-of-Stake (DPoS)"
+  ],
+  "correctAnswer": "Threshold Relay",
+  "difficulty": "Medium"
+},
+{
+  "questionNumber": 5,
+  "question": "What programming language is primarily used for developing on the ICP blockchain?",
+  "options": [
+    "JavaScript",
+    "Solidity",
+    "Motoko",
+    "Python"
+  ],
+  "correctAnswer": "Motoko",
+  "difficulty": "Medium"
+},
+{
+  "questionNumber": 6,
+  "question": "What role does the Internet Identity (II) play in ICP?",
+  "options": [
+    "Token issuance",
+    "Governance mechanism",
+    "Identity management",
+    "Network security"
+  ],
+  "correctAnswer": "Identity management",
+  "difficulty": "Medium"
+},
+{
+  "questionNumber": 7,
+  "question": "ICP aims to address scalability challenges by:",
+  "options": [
+    "Increasing block size",
+    "Reducing transaction speed",
+    "Introducing sharding techniques",
+    "Centralizing control"
+  ],
+  "correctAnswer": "Introducing sharding techniques",
+  "difficulty": "Medium"
+},
+{
+  "questionNumber": 8,
+  "question": "Which of the following is NOT a potential application of ICP?",
+  "options": [
+    "Decentralized finance (DeFi)",
+    "Supply chain management",
+    "Social media platforms",
+    "Identity verification"
+  ],
+  "correctAnswer": "Social media platforms",
+  "difficulty": "Medium"
+},
+{
+  "questionNumber": 9,
+  "question": "ICP's unique approach to hosting software directly on the blockchain aims to:",
+  "options": [
+    "Increase reliance on centralized infrastructure",
+    "Improve efficiency and reduce costs",
+    "Slow down transaction processing",
+    "Limit user access"
+  ],
+  "correctAnswer": "Improve efficiency and reduce costs",
+  "difficulty": "Medium"
+},
+{
+  "questionNumber": 10,
+  "question": "What type of smart contracts does ICP support?",
+  "options": [
+    "Non-turing complete",
+    "Turing complete",
+    "Limited functionality",
+    "Restricted execution"
+  ],
+  "correctAnswer": "Turing complete",
+  "difficulty": "Medium"
+},
+{
+  "questionNumber": 11,
+  "question": "What specific cryptographic technique is utilized by ICP for securing transactions?",
+  "options": [
+    "RSA",
+    "SHA-256",
+    "ECC (Elliptic Curve Cryptography)",
+    "AES (Advanced Encryption Standard)"
+  ],
+  "correctAnswer": "ECC (Elliptic Curve Cryptography)",
+  "difficulty": "Hard"
+},
+{
+  "questionNumber": 12,
+  "question": "ICP's decentralized governance model involves:",
+  "options": [
+    "Single entity control",
+    "Community-driven decision making",
+    "Government regulation",
+    "Corporate oversight"
+  ],
+  "correctAnswer": "Community-driven decision making",
+  "difficulty": "Hard"
+},
+{
+  "questionNumber": 13,
+  "question": "Which sector is most likely to benefit from ICP's decentralized computing capabilities?",
+  "options": [
+    "Traditional banking",
+    "Healthcare",
+    "Retail shopping",
+    "Entertainment"
+  ],
+  "correctAnswer": "Healthcare",
+  "difficulty": "Hard"
+},
+{
+  "questionNumber": 14,
+  "question": "ICP's interoperability feature allows it to connect with:",
+  "options": [
+    "Only other blockchain networks",
+    "Traditional banking systems",
+    "Both blockchain and traditional IT systems",
+    "Only decentralized applications"
+  ],
+  "correctAnswer": "Both blockchain and traditional IT systems",
+  "difficulty": "Hard"
+},
+{
+  "questionNumber": 15,
+  "question": "What is the primary advantage of using ICP's Internet Identity (II)?",
+  "options": [
+    "Increased transaction fees",
+    "Enhanced network security",
+    "Slower transaction processing",
+    "Limited user access"
+  ],
+  "correctAnswer": "Enhanced network security",
+  "difficulty": "Hard"
+},
+{
+  "questionNumber": 16,
+  "question": "What role does the Canister SDK play in the ICP ecosystem?",
+  "options": [
+    "Token issuance",
+    "Software development kit for canister smart contracts",
+    "Decentralized exchange platform",
+    "Community governance tool"
+  ],
+  "correctAnswer": " Software development kit for canister smart contracts",
+  "difficulty": "Hard"
+},
+{
+  "questionNumber": 17,
+  "question": "ICP emphasizes scalability and security by utilizing:",
+  "options": [
+    "Advanced proof-of-work (PoW)",
+    "Threshold Relay",
+    "Centralized validation",
+    "Public-private key encryption"
+  ],
+  "correctAnswer": "Threshold Relay",
+  "difficulty": "Hard"
+},
+{
+  "questionNumber": 18,
+  "question": "Which sector is least likely to benefit directly from ICP's decentralized computing capabilities?",
+  "options": [
+    "Healthcare",
+    "Supply chain management",
+    "Traditional banking",
+    "Entertainment"
+  ],
+  "correctAnswer": "Entertainment",
+  "difficulty": "Hard"
+},
+{
+  "questionNumber": 19,
+  "question": "What is a key feature of ICP's smart contracts?",
+  "options": [
+    "High gas fees",
+    "Turing completeness",
+    "Centralized execution",
+    "Limited programming options"
+  ],
+  "correctAnswer": "Turing completeness",
+  "difficulty": "Hard"
+},
+{
+  "questionNumber": 20,
+  "question": "ICP's approach to security includes:",
+  "options": [
+    "Encouraging open access to all data",
+    "Utilizing cryptography and secure protocols",
+    "Storing sensitive information on centralized servers",
+    "Relying solely on user authentication"
+  ],
+  "correctAnswer": "Utilizing cryptography and secure protocols",
+  "difficulty": "Hard"
+}
+]
