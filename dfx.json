@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "verifedAI_icp_backend": {
+      "main": "src/verifedAI_icp_backend/main.mo",
+      "type": "motoko"
+    },
+    "verifedAI_icp_frontend": {
+      "dependencies": [
+        "verifedAI_icp_backend"
+      ],
+      "source": [
+        "src/verifedAI_icp_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "verifedAI_icp_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
