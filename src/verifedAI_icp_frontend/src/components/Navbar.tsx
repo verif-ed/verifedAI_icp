@@ -7,7 +7,7 @@ import "@suiet/wallet-kit/style.css";
 import ThemeController from "./ThemeController";
 
 import { Link } from "react-router-dom";
-import PlugConnect from "@psychedelic/plug-connect";
+// import PlugConnect from "@psychedelic/plug-connect";
 import worldid from "../assets/worldId-removebg-preview.png";
 
 const Navbar = () => {
@@ -137,11 +137,11 @@ const Navbar = () => {
                 </button>
               )}
             </IDKitWidget>
-            <PlugConnect
+            {/* <PlugConnect
               whitelist={["canister-id"]}
               onConnectCallback={() => console.log("Some callback")}
               title="Connect"
-            />
+            /> */}
 
             <div className=""></div>
           </div>

@@ -1,6 +1,7 @@
 // import { useState } from "react";
 import { Link } from "react-router-dom";
 import bgi from "../assets/background2.jpeg";
+import ChatBot from "../components/ChatBot";
 
 const Home = () => {
   // const [open, setOpen] = useState(false);
@@ -8,6 +9,10 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section */}
+
+      <div className="absolute right-3 bottom-3">
+        <ChatBot />
+      </div>
       <div
         className="hero min-h-screen bg-gray-100"
         style={{
