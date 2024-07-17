@@ -1,4 +1,4 @@
-import alien from "../../public/Alien Face.svg";
+import alien from "../assets/Alien Face.svg";
 const Acheivements = () => {
   return (
     <div className="card w-96 bg-base-100 shadow-xl">

@@ -2,195 +2,163 @@
 import { Link } from "react-router-dom";
 import bgi from "../assets/background2.jpeg";
 import ChatBot from "../components/ChatBot";
+import shield from "../assets/Asset 1.svg";
+import Sidebar from "../components/Sidebar";
+import Loader from "../components/Loader";
+import Card from "../components/Home/Card";
+import img1 from "../assets/1 of 4.png";
+import img2 from "../assets/3 of 4.png";
+import img3 from "../assets/2 of 4.png";
+import img4 from "../assets/4 of 4.png";
+import loimg1 from "../assets/2of3.jpeg";
+import loimg2 from "../assets/3of3.jpeg";
+import loimg3 from "../assets/1of3.png";
 
 const Home = () => {
   // const [open, setOpen] = useState(false);
 
   return (
-    <div>
+    <div className="example">
       {/* Hero Section */}
 
-      <div className="absolute right-3 bottom-3">
+      <div className=" ">
         <ChatBot />
       </div>
-      <div
-        className="hero min-h-screen bg-gray-100"
-        style={{
-          backgroundImage: `url(${bgi})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">
-              <span className="text-gray-700">Verif</span>
-              <span className="text-accent">Ed</span>
-            </h1>
-            <p className="mb-5 text-2xl feature-block font-semibold text-gray-700 ">
-              Powered by Internet Computer Protocol (ICP).
-            </p>
-            <button
-              className="btn btn-primary mr-4"
-              // onClick={() => {
-              //   setOpen(true);
-              // }}
+      <div className="hero bg-base-200 min-h-screen w-screen" id="intro0">
+        <div className="hero-content flex-col lg:flex-row-reverse w-full flex justify-evenly">
+          <div className="w-[60vw] flex justify-end mr-7">
+            <img
+              src={shield}
+              className="max-w-sm w-72"
+              style={{
+                width: "100%",
+                height: "100%",
+
+                transform: "rotateZ(-13deg)",
+              }}
+            />
+          </div>
+
+          <div className="w-[40vw]">
+            <h1
+              className="text-5xl font-medium text-secondary "
+              style={{
+                fontFamily: "BRLNSR",
+              }}
             >
-              Get Started
+              Engage.Innovate.Validate.
+            </h1>
+            <p className="py-6 text-xl font-semibold text-gray-300">
+              VerifED delivers AI-powered certification,offering an efficient
+              and robust solution for your needs.
+            </p>
+            <button className="border border-neutral p-3 bg-none rounded-full px-8 ml-4 ">
+              EXPLORE
             </button>
-            <Link to="/learn-more" className="btn btn-secondary">
-              Learn More
-            </Link>
           </div>
         </div>
+        <Sidebar />
       </div>
 
       {/* Features Section */}
-      <div className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Our AI-Powered Solutions
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="feature-block text-center">
-              <h3 className="text-xl font-semibold">Exam Preparation</h3>
-              <p>
-                Facilitate comprehensive exam readiness through curated study
-                materials, interactive quizzes, and simulated practice tests.
-              </p>
-            </div>
-            <div className="feature-block text-center">
-              <h3 className="text-xl font-semibold">FAQ Handling</h3>
-              <p>
-                Provide authoritative responses to frequently asked questions
-                regarding exam protocols, procedures, and policies.
-              </p>
-            </div>
-            <div className="feature-block text-center">
-              <h3 className="text-xl font-semibold">Proctoring Support</h3>
-              <p>
-                Offer seamless technical assistance during remote proctoring
-                sessions to ensure smooth exam administration.
-              </p>
-            </div>
-            <div className="feature-block text-center">
-              <h3 className="text-xl font-semibold">Feedback Collection</h3>
-              <p>
-                Implement structured mechanisms to gather valuable candidate
-                feedback, fostering continuous improvement of services and
-                offerings.
-              </p>
-            </div>
-            <div className="feature-block text-center">
-              <h3 className="text-xl font-semibold">Training</h3>
-              <p>
-                Continuous training of AI models to improve accuracy and
-                relevance.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Decentralization and Security Section */}
-      <div className="py-16 bg-gray-100">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
+      <div
+        className="py-16 w-screen h-screen flex flex-col justify-around bg-base-300 "
+        id="intro1"
+      >
+        <div className="max-w-6xl mx-auto px-2">
+          <h2 className="text-3xl font-bold ">
             Decentralization and Security with ICP
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="text-center">
-              <h3 className="text-xl font-semibold">Decentralization</h3>
-              <p>
-                Leveraging the Internet Computer Protocol to ensure data
-                integrity and decentralized management of exam support and
-                certification processes.
-              </p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-xl font-semibold">Security</h3>
-              <p>
-                Ensuring secure and tamper-proof operations through robust
-                cryptographic measures.
-              </p>
-            </div>
+          <div>
+            {/* <p>
+              VerifED leverages the Internet Computer Protocol (ICP) to provide
+              a decentralized and secure environment for certifications and
+              assessments. ICP ensures that data is encrypted and stored on
+              multiple nodes, making it virtually impossible for unauthorized
+              access.
+            </p> */}
+          </div>
+        </div>
+        <div className="max-w-6xl mx-auto px-2">
+          <h2 className="text-3xl font-bold ">
+            Decentralization and Security with ICP
+          </h2>
+          <div>
+            {/* <p>
+              VerifED leverages the Internet Computer Protocol (ICP) to provide
+              a decentralized and secure environment for certifications and
+              assessments. ICP ensures that data is encrypted and stored on
+              multiple nodes, making it virtually impossible for unauthorized
+              access.
+            </p> */}
           </div>
         </div>
       </div>
+      {/* <Loader /> */}
 
       {/* Innovation and Ethics Section */}
-      <div className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Innovation and Ethical Considerations
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="text-center">
-              <h3 className="text-xl font-semibold">Innovation</h3>
-              <p>
-                Leading the exploration of cutting-edge AI-driven solutions to
-                ensure the integrity and fairness of assessment practices.
-              </p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-xl font-semibold">Ethical Considerations</h3>
-              <p>
-                Addressing privacy and fairness concerns in testing environments
-                through meticulous implementation.
-              </p>
-            </div>
-          </div>
+      <div
+        className=" h-screen w-screen  flex justify-center items-center "
+        id="intro2"
+      >
+        <div className=" flex justify-around  gap-7 border border-neutral p-14 rounded-3xl items-stretch  ">
+          <Card
+            imgUrl={img1}
+            size="300"
+            Title="Exam Preparation"
+            description="Enchance exam readiness with curated study materials interative quizzez and practice tests"
+          />
+          <Card
+            imgUrl={img3}
+            size="300"
+            Title="Proctoring Support"
+            description="Provide seamless technical support during remote proctoring for smooth exam administration "
+          />
+          <Card
+            imgUrl={img2}
+            size="300"
+            Title="Feedback & training"
+            description="Implement feedback mechanisms for continuous improvement and AI training "
+          />
+          <Card
+            imgUrl={img4}
+            size="300"
+            Title="FAQ Handling"
+            description="Offer authoritative FAQs on exam protocols and policies"
+          />
         </div>
       </div>
 
       {/* Advanced AI Features Section */}
-      <div className="py-16 bg-gray-100">
+      <div className="py-16" id="intro3">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Advanced AI Features
+          <h2 className="text-3xl font-bold mb-12">
+            Leveraging Advanced AI Features
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="text-center">
-              <h3 className="text-xl font-semibold">
-                Facial Movement Analysis
-              </h3>
-              <p>
-                Track and identify individuals by analyzing real-time facial
-                expressions and movements every 30 seconds.
-              </p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-xl font-semibold">Eye Blink Recognition</h3>
-              <p>Validate identity through biometric eye blinking patterns.</p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-xl font-semibold">Trustworthiness</h3>
-              <p>
-                Uphold the credibility and reliability of certifications and
-                assessments.
-              </p>
-            </div>
+          <div className=" flex justify-around  gap-7 border border-neutral p-14 rounded-[50px] items-stretch  ">
+            <Card
+              imgUrl={loimg3}
+              size={"200"}
+              description="Track and identify individual by analyzing realtime  facial expressions and movements
+              "
+            />
+            <Card
+              imgUrl={loimg2}
+              size={"200"}
+              description="Ensure credibility and reliablility of examinations and assessments"
+            />
+            <Card
+              imgUrl={loimg1}
+              size={"200"}
+              description="Validate identity through biometric eye-blinking patterns"
+            />
           </div>
         </div>
       </div>
 
-      {/* Testimonials Section
-      <div className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">What Our Users Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="text-center">
-              <p>"AI chat increased our candidate satisfaction by 30%!"</p>
-            </div>
-            <div className="text-center">
-              <p>"Query resolution time was halved with AI integration."</p>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-      {/* Call to Action Section */}
-      <div className="py-16 bg-white">
+      <div className="py-16  " id="intro4">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-12">
             Ready to Transform Your Exam Experience with Decentralized AI?

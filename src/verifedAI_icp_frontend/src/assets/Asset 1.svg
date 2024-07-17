@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 59.88 78.15">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        isolation: isolate;
+        opacity: .2;
+      }
+
+      .cls-2, .cls-5 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-3);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="-1269.23" y1="580.56" x2="-1267.8" y2="580.2" gradientTransform="translate(67772.92 43170.97) scale(53.86 -74.67)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2573ba"/>
+      <stop offset=".91" stop-color="#0364ae"/>
+      <stop offset="1" stop-color="#0063ad"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="-1276" y1="500.53" x2="-1275" y2="500.53" gradientTransform="translate(40711.31 2823.29) scale(32.74 -5.64)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0063ad"/>
+      <stop offset="1" stop-color="#2573ba"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="-1270.47" y1="577.65" x2="-1269.32" y2="577.65" gradientTransform="translate(67768.31 43174.45) scale(53.87 -74.67)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7bdaff"/>
+      <stop offset="1" stop-color="#59bdef"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_572" data-name="Group 572">
+    <g id="Group_568" data-name="Group 568">
+      <g id="Group_567" data-name="Group 567">
+        <path id="Path_439" data-name="Path 439" class="cls-1" d="M59.68,30.87L32.95,2.16,6.22,0S1.92,36.24,32.95,74.67c31.02-2.61,26.73-43.8,26.73-43.8Z"/>
+        <path id="Path_440" data-name="Path 440" class="cls-3" d="M6.22,0L.2,3.47l26.73,2.16,6.01-3.47L6.22,0Z"/>
+        <path id="Path_441" data-name="Path 441" class="cls-4" d="M53.66,34.34L26.93,5.64l-10.99-1.11L.2,3.48s-4.3,36.24,26.73,74.67c31.03-2.61,26.73-43.81,26.73-43.81Z"/>
+        <path id="Path_442" data-name="Path 442" class="cls-5" d="M53.66,34.34L26.93,5.64.2,3.48l.76-.44,27.09,2.19,26.73,28.7s3.59,34.44-19.52,42.33c21.88-8.6,18.41-41.92,18.41-41.92Z"/>
+      </g>
+      <path id="Path_443" data-name="Path 443" class="cls-2" d="M50.42,34.78L26.39,8.98l-9.88-1-14.15-.95S-1.51,39.61,26.39,74.17c27.9-2.34,24.03-39.39,24.03-39.39Z"/>
+    </g>
+  </g>
+</svg>

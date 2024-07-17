@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react";
 // import io from "socket.io-client";
+// import { FaceMesh } from "../../assets/face_mesh/index.js";
 import * as faceMesh from "@mediapipe/face_mesh";
-import { FaceMesh } from "@mediapipe/face_mesh";
-import * as cam from "@mediapipe/camera_utils";
+// import * as cam from "@mediapipe/camera_utils";
 import * as drawingUtils from "@mediapipe/drawing_utils";
+import "@mediapipe/face_mesh/face_mesh.js";
 import {
   analyzeTexture,
   detectBlink,
@@ -26,55 +27,61 @@ const VideoCapture: React.FC<VideoCaptureProps> = ({ testComplete }) => {
   const [_isCamon, setCamon] = React.useState(false);
 
   useEffect(() => {
-    const faceMeshInstance = new FaceMesh({
-      locateFile: (file: any) => {
-        return `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`;
-      },
-    });
+    const loadFaceMesh = async () => {
+      const { FaceMesh } = await import("@mediapipe/face_mesh");
+      const { Camera } = await import("@mediapipe/camera_utils");
 
-    faceMeshInstance.setOptions({
-      maxNumFaces: 1,
-      refineLandmarks: true,
-      minDetectionConfidence: 0.5,
-      minTrackingConfidence: 0.5,
-    });
-
-    faceMeshInstance.onResults((results: any) => {
-      resultsRef.current = results;
-      drawResults();
-      analyzeResults();
-    });
-
-    if (videoRef.current) {
-      const camera = new cam.Camera(videoRef.current, {
-        onFrame: async () => {
-          if (videoRef.current) {
-            await faceMeshInstance.send({ image: videoRef.current });
-          }
+      const faceMeshInstance = new FaceMesh({
+        locateFile: (file: any) => {
+          return `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`;
         },
-        width: 640,
-        height: 480,
       });
-      setCamon(true);
-      camera.start();
-      if (testComplete) {
-        camera.stop();
-        setCamon(false);
-        socket?.close();
+
+      faceMeshInstance.setOptions({
+        maxNumFaces: 1,
+        refineLandmarks: true,
+        minDetectionConfidence: 0.5,
+        minTrackingConfidence: 0.5,
+      });
+
+      faceMeshInstance.onResults((results: any) => {
+        resultsRef.current = results;
+        drawResults();
+        analyzeResults();
+      });
+
+      if (videoRef.current) {
+        const camera = new Camera(videoRef.current, {
+          onFrame: async () => {
+            if (videoRef.current) {
+              await faceMeshInstance.send({ image: videoRef.current });
+            }
+          },
+          width: 640,
+          height: 480,
+        });
+        setCamon(true);
+        camera.start();
+        if (testComplete) {
+          camera.stop();
+          setCamon(false);
+          socket?.close();
+        }
+        return () => {
+          camera.stop();
+        };
       }
+
+      const intervalId = setInterval(() => {
+        promptUserAction();
+      }, 30000); // Every 30 seconds
+
       return () => {
-        camera.stop();
+        faceMeshInstance.close();
+        clearInterval(intervalId);
       };
-    }
-
-    const intervalId = setInterval(() => {
-      promptUserAction();
-    }, 30000); // Every 30 seconds
-
-    return () => {
-      faceMeshInstance.close();
-      clearInterval(intervalId);
     };
+    loadFaceMesh();
   }, []);
 
   const drawResults = () => {

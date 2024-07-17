@@ -7,6 +7,7 @@ interface TestResult {
   lookingAwayCount: number;
   possiblePhotoDetections: number;
   overallRisk: string;
+  score: number;
 }
 
 interface ResultComponentProps {

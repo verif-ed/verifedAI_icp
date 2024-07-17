@@ -1,14 +1,15 @@
+import logo from "../assets/logo-removebg-preview.png";
+
 const Footer = () => {
   return (
     <>
       <footer className="footer p-10 bg-base-200 text-base-content">
         <aside className="flex flex-col justify-between h-full p-1">
-          <div className="text-3xl font-bold">
-            <span className="text-gray-700">Verif</span>
-            <span className="text-accent">Ed</span>
-          </div>
           <p className=" italic">
-            VeriEd Solutions Ltd.
+            <span className="flex  items-center gap-1">
+              <img src={logo} alt="logo" height={70} width={70} />
+              VerifED
+            </span>
             <br />
             Providing revolutionary solutions for the education sector using
             blockchain.

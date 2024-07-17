@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 
 import toast, { Toaster } from "react-hot-toast";
-import data from "../../move_que.json";
-import icp from "../../icp.json";
+import data from "../move_que.json";
+import icp from "../icp.json";
 import { useParams } from "react-router-dom";
 import VideoCapture from "../components/Proctoring/VideoCapture";
 
@@ -16,16 +16,17 @@ interface TestResult {
   lookingAwayCount: number;
   possiblePhotoDetections: number;
   overallRisk: string;
+  score: number;
 }
 
 function formatDateTime(date: any) {
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var ampm = hours >= 12 ? "pm" : "am";
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  const ampm = hours >= 12 ? "pm" : "am";
   hours = hours % 12;
   hours = hours ? hours : 12; // the hour '0' should be '12'
   minutes = minutes < 10 ? "0" + minutes : minutes;
-  var strTime = hours + ":" + minutes + " " + ampm;
+  const strTime = hours + ":" + minutes + " " + ampm;
   return (
     date.getMonth() +
     1 +
@@ -65,12 +66,13 @@ function Quiz() {
     lookingAwayCount: 0,
     possiblePhotoDetections: 0,
     overallRisk: "",
+    score: 0,
   });
   //   const quizId : any = SearchParams.get('id')
   //   const quizName : any = SearchParams.get('name')
   //   const course : any = SearchParams.get('course')
   //   const courseCode : any = SearchParams.get('coursecode')
-  const quizTime = 10; // 5 minutes in seconds
+  const quizTime = 1200; // 5 minutes in seconds
   // const [user, setUser] = useState(null); // User authentication state
   const [questions, setQuestions] = useState<QuizQuestion[]>([]); // Provide type annotation for questions
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -191,8 +193,8 @@ function Quiz() {
       }
     }
 
-    var d = new Date();
-    var n = formatDateTime(d);
+    const d = new Date();
+    const n = formatDateTime(d);
     const quizResults = {
       score: myScore,
       totalQuestions: questions.length,

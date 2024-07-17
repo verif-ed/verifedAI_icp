@@ -9,9 +9,7 @@ const SocketContext = createContext<SocketContextType>({ socket: null });
 
 export const useSocket = () => useContext(SocketContext);
 
-export const SocketProvider: React.FC<React.PropsWithChildren<{}>> = ({
-  children,
-}) => {
+export const SocketProvider = ({ children }: { children: any }) => {
   const [socket, setSocket] = useState<Socket | null>(null);
 
   useEffect(() => {

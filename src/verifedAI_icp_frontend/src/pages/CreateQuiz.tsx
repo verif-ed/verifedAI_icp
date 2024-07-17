@@ -31,6 +31,7 @@ function CreateQuiz() {
     // console.log("excel  "  + excelData);
     if (data) {
       try {
+        console.log(data);
       } catch (error) {
         console.error("Error adding quiz data: ", error);
         toast.error("Quiz addition failed");

@@ -1,54 +1,66 @@
 {
-  "name": "chainproctor",
+  "name": "my-app",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
-  },
   "dependencies": {
     "@mediapipe/camera_utils": "^0.3.1675466862",
     "@mediapipe/drawing_utils": "^0.3.1675466124",
     "@mediapipe/face_mesh": "^0.4.1633559619",
-    "@mysten/dapp-kit": "^0.14.5",
-    "@mysten/sui": "^1.0.5",
-    "@mysten/sui.js": "^0.54.1",
-    "@mysten/wallet-kit": "^0.8.6",
-    "@mysten/zklogin": "^0.7.4",
-  
-    "@suiet/wallet-kit": "^0.2.24",
-    "@tanstack/react-query": "^5.40.1",
-    "@worldcoin/idkit": "^1.2.0",
+    "@psychedelic/plug-connect": "^0.2.0",
+    "@suiet/wallet-kit": "^0.3.2",
+    "@tanstack/react-query": "^5.51.1",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@worldcoin/idkit": "^1.2.2",
+    "antd": "^5.19.1",
+    "daisyui": "^4.12.10",
     "dotenv": "^16.4.5",
-    "react": "^18.2.0",
+    "eslint-plugin-react-refresh": "^0.4.8",
+    "ldrs": "^1.0.2",
+    "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-dropzone": "^14.2.3",
     "react-hot-toast": "^2.4.1",
-    "react-router-dom": "^6.23.1",
+    "react-router-dom": "^6.24.1",
+    "react-scripts": "5.0.1",
     "socket.io-client": "^4.7.5",
-    "uuid": "^9.0.1",
-    "uuidv4": "^6.2.13",
-    "vite-plugin-node-polyfills": "^0.22.0",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^4.4.2",
+    "uuid": "^10.0.0",
+    "web-vitals": "^2.1.0",
     "xlsx": "^0.18.5",
-    "zustand": "^4.5.2"
+    "zustand": "^4.5.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
-    "@vitejs/plugin-react-swc": "^3.5.0",
-    "autoprefixer": "^10.4.19",
-    "daisyui": "^4.11.1",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.6",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.2.2",
-    "vite": "^5.2.0"
+    "@types/uuid": "^10.0.0"
   }
 }
