@@ -4,15 +4,35 @@ import {
   ISuccessResult,
 } from "@worldcoin/idkit";
 import "@suiet/wallet-kit/style.css";
-// import ThemeController from "./ThemeController";
-
 import { Link } from "react-router-dom";
 import PlugConnect from "@psychedelic/plug-connect";
 import worldid from "../assets/worldId-removebg-preview.png";
-import { stringify } from "querystring";
 import logo from "../assets/logo-removebg-preview.png";
+import Login from "../Login";
+import { useState } from "react";
+
+// Extend the Window interface to include the ic property
+declare global {
+  interface Window {
+    ic: {
+      plug: {
+        requestConnect: (options: { whitelist: string[] }) => Promise<boolean>;
+        agent: {
+          getPrincipal: () => Promise<{ toText: () => string }>;
+        };
+      };
+    };
+  }
+}
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [principalId, setPrincipalId] = useState(""); // State to hold the principal ID
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
   const handleVerify = async (proof: ISuccessResult) => {
     console.log("handling proof", proof);
 
@@ -28,6 +48,7 @@ const Navbar = () => {
       throw new Error("Verification failed."); // IDKit will display the error message to the user in the modal
     }
   };
+
   const onSuccess = () => {
     // This is where you should perform any actions after the modal is closed
     // Such as redirecting the user to a new page
@@ -35,24 +56,25 @@ const Navbar = () => {
 
     window.location.href = "/dashboard";
   };
-  const handleConnect = () => {
+
+  const handleConnect = async (whitelist: string[]) => {
     try {
-      chrome.runtime.sendMessage(
-        "cfbfdhimifdmdehjmkdobpcjfefblkjm",
-        { message: "Hello from React!" },
-        (response) => {
-          if (chrome.runtime.lastError) {
-            console.error(
-              "Error sending message:",
-              chrome.runtime.lastError.message
-            );
-          } else {
-            console.log("Response from extension:", response);
-          }
-        }
-      );
+      // Check if the Plug wallet is available
+      if (typeof window.ic?.plug === 'undefined') {
+        console.error('Plug wallet is not installed!');
+        return;
+      }
+
+      const response = await window.ic.plug.requestConnect({
+        whitelist,
+      });
+      if (response) {
+        const principal = await window.ic.plug.agent.getPrincipal();
+        setPrincipalId(principal.toText()); // Save the principal ID to state
+        console.log("Connected to wallet with principal ID:", principal.toText());
+      }
     } catch (error) {
-      console.error("Exception during message send:", error);
+      console.error("Error during wallet connection:", error);
     }
   };
 
@@ -178,26 +200,28 @@ const Navbar = () => {
                     {}
 
                     <PlugConnect
-                      whitelist={["2prnp-dqaaa-aaaab-qacjq-cai"]}
-                      onConnectCallback={handleConnect}
+                      whitelist={["2gsgt-vyaaa-aaaab-qacia-cai"]}
+                      onConnectCallback={() => handleConnect(["2gsgt-vyaaa-aaaab-qacia-cai"])}
                       title="Connect"
                       debug={true}
-
-                      // darkMode={true}
                     />
+                    <Login onLogin={handleLogin} />
                   </div>
                 </div>
               </dialog>
 
-              {/* <a className="btn bg-blue-800">Connect Wallet</a> */}
+              {/* Display the principal ID */}
+              {principalId && (
+                <div className="flex items-center gap-2">
+                  <span className="font-bold">Wallet ID:</span>
+                  <span>{principalId}</span>
+                </div>
+              )}
 
               <div className=""></div>
             </div>
           </div>
         </div>
-        {/* <div className="border rounded-3xl  shadow-md shadow-gray-300 flex ml-2 px-2 py-1 bg-base-200">
-          <ThemeController />
-        </div> */}
       </div>
     </>
   );
