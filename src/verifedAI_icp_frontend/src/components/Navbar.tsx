@@ -60,8 +60,8 @@ const Navbar = () => {
   const handleConnect = async (whitelist: string[]) => {
     try {
       // Check if the Plug wallet is available
-      if (typeof window.ic?.plug === 'undefined') {
-        console.error('Plug wallet is not installed!');
+      if (typeof window.ic?.plug === "undefined") {
+        console.error("Plug wallet is not installed!");
         return;
       }
 
@@ -71,7 +71,10 @@ const Navbar = () => {
       if (response) {
         const principal = await window.ic.plug.agent.getPrincipal();
         setPrincipalId(principal.toText()); // Save the principal ID to state
-        console.log("Connected to wallet with principal ID:", principal.toText());
+        console.log(
+          "Connected to wallet with principal ID:",
+          principal.toText()
+        );
       }
     } catch (error) {
       console.error("Error during wallet connection:", error);
@@ -169,43 +172,49 @@ const Navbar = () => {
                     </button>
                   </form>
                   <h3 className="font-semibold p-4 text-xl">Connect Wallet!</h3>
-                  <div className="flex  justify-evenly items-center p-8">
-                    <IDKitWidget
-                      app_id="app_06dfaf6fb5f0b8ac58c10bf412238ffb" // obtained from the Developer Portal
-                      action="wallet-connect" // obtained from the Developer Portal
-                      onSuccess={onSuccess} // callback when the modal is closed
-                      handleVerify={handleVerify} // callback when the proof is received
-                      verification_level={VerificationLevel.Device}
-                    >
-                      {({ open }) => (
-                        // This is the button that will open the IDKit modal
-                        <button
-                          onClick={open}
-                          className="w-max mr-3 bg-white border-[3px] border-black rounded-xl flex justify-between items-center gap-4 px-1"
-                        >
-                          <img
-                            src={worldid}
-                            alt=""
-                            className=""
-                            height={35}
-                            width={35}
-                          />{" "}
-                          <p className="text font-semibold text-black">
-                            World ID
-                          </p>
-                        </button>
-                      )}
-                    </IDKitWidget>
+                  <div className="flex-col items-center p-8">
+                    <div className="flex items-center justify-evenly ">
+                      <IDKitWidget
+                        app_id="app_06dfaf6fb5f0b8ac58c10bf412238ffb" // obtained from the Developer Portal
+                        action="wallet-connect" // obtained from the Developer Portal
+                        onSuccess={onSuccess} // callback when the modal is closed
+                        handleVerify={handleVerify} // callback when the proof is received
+                        verification_level={VerificationLevel.Device}
+                      >
+                        {({ open }) => (
+                          // This is the button that will open the IDKit modal
+                          <button
+                            onClick={open}
+                            className="w-max mr-3 bg-white border-[3px] border-black rounded-xl flex justify-between items-center gap-4 px-1"
+                          >
+                            <img
+                              src={worldid}
+                              alt=""
+                              className=""
+                              height={35}
+                              width={35}
+                            />{" "}
+                            <p className="text font-semibold text-black">
+                              World ID
+                            </p>
+                          </button>
+                        )}
+                      </IDKitWidget>
 
-                    {}
+                      {}
 
-                    <PlugConnect
-                      whitelist={["2gsgt-vyaaa-aaaab-qacia-cai"]}
-                      onConnectCallback={() => handleConnect(["2gsgt-vyaaa-aaaab-qacia-cai"])}
-                      title="Connect"
-                      debug={true}
-                    />
-                    <Login onLogin={handleLogin} />
+                      <PlugConnect
+                        whitelist={["2iql3-oiaaa-aaaab-qacja-cai"]}
+                        onConnectCallback={() =>
+                          handleConnect(["2iql3-oiaaa-aaaab-qacja-cai"])
+                        }
+                        title="Connect"
+                        debug={true}
+                      />
+                    </div>
+                    <div className="w-[70%] flex justify-center items-center m-auto mt-5">
+                      <Login onLogin={handleLogin} />
+                    </div>
                   </div>
                 </div>
               </dialog>

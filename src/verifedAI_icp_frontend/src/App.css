@@ -39,6 +39,15 @@
 
 /* src/index.css or a similar global stylesheet */
 .glowing-text {
-  color: #fff;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff;
+  color: #edfcff;
+  text-shadow:
+    0 0 5px #007fee,
+    0 0 10px #fff,
+    0 0 20px #3799fb,
+    0 0 40px #0ff,
+    0 0 80px #0ff,
+    0 0 90px #0ff,
+    0 0 100px #0ff,
+    0 0 150px #0ff;
 }
+

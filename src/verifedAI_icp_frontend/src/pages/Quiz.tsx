@@ -218,7 +218,9 @@ function Quiz() {
         console.log(`Quiz Completed! Your Score: ${score}/${questions.length}`);
         socket.on("test_analysis", (data: any) => {
           console.log(data, "this is data");
-          setResult(data);
+          setResult(data as TestResult);
+
+          console.log("this is result", result, data.score);
         });
       }
 

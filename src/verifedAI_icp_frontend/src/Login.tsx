@@ -86,10 +86,10 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         </>
       ) : (
         <button
-          className="w-full py-2 px-4 bg-white font-bold text-black rounded-full text-xl border-2 border-orange-600 hover:bg-gray-300 "
+          className="w-max p-3 py-2 px-4 bg-white font-bold text-black rounded-xl text-xl border-2 border-orange-600 hover:bg-gray-300 "
           onClick={handleLogin}
         >
-          <span className="gradient-text">Login with Internet Identity</span>
+          <span className="text-lg">Login with Internet Identity</span>
         </button>
       )}
     </div>

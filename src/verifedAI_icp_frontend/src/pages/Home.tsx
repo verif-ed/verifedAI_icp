@@ -14,7 +14,7 @@ import "../App.css";
 
 const Home = () => {
   return (
-    <div className="example overflow-hidden">
+    <div className="example overflow-hidden max-w-full lg:w-screen ">
       {/* Hero Section */}
       <div>
         <ChatBot />
@@ -32,9 +32,9 @@ const Home = () => {
             />
           </div>
 
-          <div className="w-full lg:w-[40vw] text-center lg:text-left px-4 lg:px-0">
+          <div className="w-full lg:w-[40vw] text-center  lg:text-left px-4 lg:px-0">
             <h1
-              className="text-3xl lg:text-5xl font-medium text-secondary"
+              className="text-3xl  sm:text-4xl font-medium text-secondary"
               style={{
                 fontFamily: "BRLNSR",
               }}
