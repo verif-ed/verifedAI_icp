@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+/* src/index.css or a similar global stylesheet */
+.glowing-text {
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff;
+}
