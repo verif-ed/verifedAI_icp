@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-
+import Confetti from "react-confetti";
 import toast, { Toaster } from "react-hot-toast";
 import data from "../move_que.json";
 import icp from "../icp.json";
@@ -8,7 +8,7 @@ import VideoCapture from "../components/Proctoring/VideoCapture";
 
 import { useSocket } from "../Context/SocketContext";
 import Result from "../components/Result";
-
+import sampleCertificate from "../assets/sample-certificate.jpeg";
 interface TestResult {
   totalDuration: number;
   facePresentPercentage: number;
@@ -81,9 +81,14 @@ function Quiz() {
   const [isFinalQuestion, setIsFinalQuestion] = useState(false);
   const [isTimeUp, setIsTimeUp] = useState(false);
   const [timeLeft, setTimeLeft] = useState(quizTime / 1000); // Time limit in seconds
-
+  const [runConfetti, setRunConfetti] = useState(true);
+  const confettiDuration = 5000;
   const quizTimeRef = useRef(quizTime);
   const timeLeftRef = useRef(timeLeft);
+  const [dimensions, setDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
 
   const [testComplete, setTestComplete] = useState(false);
   // This can be updated to allow for custom quiz times
@@ -99,6 +104,19 @@ function Quiz() {
     }
 
     // setQuestions(data);
+  }, []);
+  useEffect(() => {
+    const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
   //   console.log(questions, "this is data");
 
@@ -235,14 +253,43 @@ function Quiz() {
   };
 
   const currentQuestion = questions[currentQuestionIndex];
+  useEffect(() => {
+    if (testComplete) {
+      const timer = setTimeout(() => {
+        setRunConfetti(false);
+      }, confettiDuration);
 
+      return () => clearTimeout(timer);
+    } // Cleanup the timer on unmount
+  }, [testComplete]);
   return (
     <>
       <Toaster />
       {testComplete ? (
         <>
-          <div className="hero h-screen w-screen justify-center items-center">
+          <div className=" h-screen w-screen justify-around items-center flex">
+            <Confetti
+              width={dimensions.width}
+              height={dimensions.width}
+              run={runConfetti}
+              tweenDuration={3000}
+            />
             <Result result={result} />
+            <div className="mx-auto text-white">
+              <div className="m-6 text-center">
+                <p className="text-lg font-semibold">
+                  Your Certificate is Under Review
+                </p>
+                <img
+                  src={sampleCertificate}
+                  alt="Sample Certificate"
+                  className="mt-4 blur w-full max-w-sm mx-auto"
+                />
+                <p className="text-lg font-semibold mt-4">
+                  You will be notified once it is ready
+                </p>
+              </div>
+            </div>
           </div>
         </>
       ) : (

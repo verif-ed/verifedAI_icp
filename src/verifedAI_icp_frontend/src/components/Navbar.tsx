@@ -9,7 +9,7 @@ import PlugConnect from "@psychedelic/plug-connect";
 import worldid from "../assets/worldId-removebg-preview.png";
 import logo from "../assets/logo-removebg-preview.png";
 import Login from "../Login";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Extend the Window interface to include the ic property
 declare global {
@@ -70,7 +70,9 @@ const Navbar = () => {
       });
       if (response) {
         const principal = await window.ic.plug.agent.getPrincipal();
-        setPrincipalId(principal.toText()); // Save the principal ID to state
+        setPrincipalId(principal.toText());
+        setIsLoggedIn(true);
+        localStorage.setItem("principalId", principal.toText()); // Save the principal ID to state
         console.log(
           "Connected to wallet with principal ID:",
           principal.toText()
@@ -80,6 +82,14 @@ const Navbar = () => {
       console.error("Error during wallet connection:", error);
     }
   };
+  useEffect(() => {
+    // Fetch the principal ID from local storage
+    const storedPrincipalId = localStorage.getItem("principalId");
+    if (storedPrincipalId) {
+      setPrincipalId(storedPrincipalId);
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   return (
     <>
@@ -160,7 +170,11 @@ const Navbar = () => {
                 }
               >
                 {" "}
-                Wallet
+                {isLoggedIn
+                  ? `${principalId.substring(0, 4)}...${principalId.substring(
+                      principalId.length - 4
+                    )}`
+                  : "Connect Wallet"}
               </button>
 
               <dialog id="my_modal_3" className="modal">
@@ -204,10 +218,10 @@ const Navbar = () => {
                       {}
 
                       <PlugConnect
-                        whitelist={["2iql3-oiaaa-aaaab-qacja-cai"]}
-                        onConnectCallback={() =>
-                          handleConnect(["2iql3-oiaaa-aaaab-qacja-cai"])
-                        }
+                        whitelist={["thk54-haaaa-aaaag-alfra-cai"]}
+                        onConnectCallback={() => {
+                          handleConnect(["thk54-haaaa-aaaag-alfra-cai"]);
+                        }}
                         title="Connect"
                         debug={true}
                       />
@@ -219,13 +233,13 @@ const Navbar = () => {
                 </div>
               </dialog>
 
-              {/* Display the principal ID */}
+              {/* Display the principal ID
               {principalId && (
                 <div className="flex items-center gap-2">
                   <span className="font-bold">Wallet ID:</span>
                   <span>{principalId}</span>
                 </div>
-              )}
+              )} */}
 
               <div className=""></div>
             </div>

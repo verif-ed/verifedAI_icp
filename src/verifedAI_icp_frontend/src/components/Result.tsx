@@ -1,4 +1,5 @@
 import React from "react";
+// Update the path to your sample certificate image
 
 interface TestResult {
   totalDuration: number;
@@ -35,7 +36,7 @@ const Result: React.FC<ResultComponentProps> = ({ result }) => {
   };
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 max-w-md mx-auto">
+    <div className="bg-white shadow-lg rounded-lg p-6 max-w-md mx-auto text-primary">
       <h2 className="text-2xl font-bold mb-4 text-center">Test Results</h2>
 
       <div className="grid grid-cols-2 gap-4">
@@ -51,6 +52,10 @@ const Result: React.FC<ResultComponentProps> = ({ result }) => {
         <div>
           <p className="font-semibold">Total Duration:</p>
           <p>{formatDuration(result.totalDuration)}</p>
+        </div>
+        <div>
+          <p className="font-semibold">Total Score:</p>
+          <p>{result.score}</p>
         </div>
 
         <div>

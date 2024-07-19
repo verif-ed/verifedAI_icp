@@ -20,7 +20,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [userTokens, setUserTokens] = useState<string | null>(null); // Use null to signify tokens are not yet fetched
 
   useEffect(() => {
-    const savedPrincipal = localStorage.getItem("principal");
+    const savedPrincipal = localStorage.getItem("principalId");
     if (savedPrincipal) {
       setIsLoggedIn(true);
       setLoginStatus(`Logged in as: ${savedPrincipal}`);
@@ -39,7 +39,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
           const agent = new HttpAgent({ identity });
           const actor = Actor.createActor(actorInterface, {
             agent,
-            canisterId: "22w4c-cyaaa-aaaab-qacka-cai", // Replace with your actual backend canister ID
+            canisterId: "thk54-haaaa-aaaag-alfra-cai", // Replace with your actual backend canister ID
           });
 
           try {
@@ -49,7 +49,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               setIsLoggedIn(true);
               const principalText = principal.toText();
               setLoginStatus(`Logged in as: ${principalText}`);
-              localStorage.setItem("principal", principalText); // Save principal to localStorage
+              localStorage.setItem("principalId", principalText); // Save principal to localStorage
               onLogin();
               // Fetch user tokens after successful login
               // Initialize user tokens if logging in for the first time
