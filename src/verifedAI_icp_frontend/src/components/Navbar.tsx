@@ -216,7 +216,7 @@ const Navbar = () => {
                       </IDKitWidget>
 
                       {}
-
+                      {/* thk54-haaaa-aaaag-alfra-cai */}
                       <PlugConnect
                         whitelist={["thk54-haaaa-aaaag-alfra-cai"]}
                         onConnectCallback={() => {
