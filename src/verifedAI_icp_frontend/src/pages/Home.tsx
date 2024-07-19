@@ -15,16 +15,19 @@ import { useEffect, useState } from "react";
 import { usePrincipalId } from "../Context/UserContext";
 
 const Home = () => {
-  const prinId = usePrincipalId();
-  console.log(prinId, "this is principal id");
+  // const prinId = usePrincipalId();
+  // console.log(prinId, "this is principal id");
   const [loggedIn, setLoggedIn] = useState(false);
+  const { principalId } = usePrincipalId();
 
-  const localId = localStorage.getItem("principalId");
   useEffect(() => {
-    if (localId) {
+    // Fetch the principal ID from local storage
+    if (principalId) {
       setLoggedIn(true);
     }
-  }, [localId]);
+  }, [principalId]);
+
+  console.log(localStorage.getItem("principalId"), "this is local storage");
 
   return (
     <div className="example overflow-hidden max-w-full lg:w-screen">

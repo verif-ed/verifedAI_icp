@@ -10,6 +10,8 @@ import worldid from "../assets/worldId-removebg-preview.png";
 import logo from "../assets/logo-removebg-preview.png";
 import Login from "../Login";
 import { useEffect, useState } from "react";
+import { usePrincipalId } from "../Context/UserContext";
+import toast from "react-hot-toast";
 
 // Extend the Window interface to include the ic property
 declare global {
@@ -27,7 +29,9 @@ declare global {
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [principalId, setPrincipalId] = useState(""); // State to hold the principal ID
+  const { principalId, setPrincipalId } = usePrincipalId();
+
+  const [loading, setLoading] = useState(false); // State to hold the principal ID
 
   const handleLogin = () => {
     setIsLoggedIn(true);
@@ -60,8 +64,9 @@ const Navbar = () => {
   const handleConnect = async (whitelist: string[]) => {
     try {
       // Check if the Plug wallet is available
+      setLoading(true);
       if (typeof window.ic?.plug === "undefined") {
-        console.error("Plug wallet is not installed!");
+        toast("Plug wallet is not installed!");
         return;
       }
 
@@ -72,11 +77,14 @@ const Navbar = () => {
         const principal = await window.ic.plug.agent.getPrincipal();
         setPrincipalId(principal.toText());
         setIsLoggedIn(true);
-        localStorage.setItem("principalId", principal.toText()); // Save the principal ID to state
+        localStorage.setItem("principalId", principal.toText());
+        setLoading(false); // Save the principal ID to state
         console.log(
           "Connected to wallet with principal ID:",
           principal.toText()
         );
+
+        (document.getElementById("my_modal_3") as HTMLDialogElement)?.close();
       }
     } catch (error) {
       console.error("Error during wallet connection:", error);
@@ -171,8 +179,8 @@ const Navbar = () => {
               >
                 {" "}
                 {isLoggedIn
-                  ? `${principalId.substring(0, 4)}...${principalId.substring(
-                      principalId.length - 4
+                  ? `${principalId?.substring(0, 4)}...${principalId?.substring(
+                      principalId?.length - 4
                     )}`
                   : "Connect Wallet"}
               </button>
@@ -217,14 +225,16 @@ const Navbar = () => {
 
                       {}
                       {/* thk54-haaaa-aaaag-alfra-cai */}
-                      <PlugConnect
-                        whitelist={["thk54-haaaa-aaaag-alfra-cai"]}
-                        onConnectCallback={() => {
-                          handleConnect(["thk54-haaaa-aaaag-alfra-cai"]);
-                        }}
-                        title="Connect"
-                        debug={true}
-                      />
+                      <div className={loading ? `disabled` : ""}>
+                        <PlugConnect
+                          whitelist={["thk54-haaaa-aaaag-alfra-cai"]}
+                          onConnectCallback={() => {
+                            handleConnect(["thk54-haaaa-aaaag-alfra-cai"]);
+                          }}
+                          title="Connect"
+                          debug={true}
+                        />
+                      </div>
                     </div>
                     <div className="w-[70%] flex justify-center items-center m-auto mt-5">
                       <Login onLogin={handleLogin} />
