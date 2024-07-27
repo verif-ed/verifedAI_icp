@@ -15,6 +15,9 @@ VerifED is a decentralized platform for online exam proctoring and credential ve
   - Biometric eye-blinking patterns for enhanced identity verification.
   - ICP integration for decentralized storage and encryption of certification data.
   - DAO-based certification acceptance for decentralized and transparent credentialing.
+## Demo
+### demo video - https://www.loom.com/share/9321ae987af14689a34b001ecad8cefc
+### live link - https://tal3i-kyaaa-aaaag-alfrq-cai.icp0.io/
 
 ## Getting Started
 
